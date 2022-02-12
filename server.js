@@ -129,4 +129,4 @@ app.post("/transactions/devideAmmount", async (req, res) => {
     //
 })
 
-app.listen(process.env.MONGO_URL, () => { console.log(`Server started at http://nammrokka.herokuapp.com:${process.env.MONGO_URL}/`) })
+app.listen(process.env.PORT || 4000, () => { console.log(`Server started at http://nammrokka.herokuapp.com:${process.env.MONGO_URL || 4000}/`) })
