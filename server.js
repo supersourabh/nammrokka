@@ -12,7 +12,7 @@ const app = Express();
 const now = new Date;
 const today = date.format(now, "DD/MM/YYYY")
 
-mongoose.connect("mongodb://localhost:27017/rokka", {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 
