@@ -1,4 +1,4 @@
-const Express = require("express");
+const express = require("express");
 const mongoose = require("mongoose");
 const User = require("./models/usermodel")
 const date = require("date-and-time");
@@ -8,11 +8,11 @@ const { findOne } = require("./models/usermodel");
 const bodyParser = require("body-parser");
 
 
-const app = Express();
+const app = express();
 const now = new Date;
 const today = date.format(now, "DD/MM/YYYY")
 
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGO_URL || "mongodb://localhost:27017/rokka", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 
@@ -26,6 +26,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.use(bodyParser())
 
+app.use("/", express.static("/public"));
 
 app.get("/home", async (req, res) => {
 
