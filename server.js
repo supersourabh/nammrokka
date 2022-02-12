@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const User = require("./models/usermodel")
 const date = require("date-and-time");
+const path = require("path")
 const Transaction = require("./models/transactionsModel");
 const TransactionAmmount = require("./models/transaction_ammount_model");
 const { findOne } = require("./models/usermodel");
@@ -27,6 +28,10 @@ mongoose.connect(process.env.MONGO_URL || "mongodb://localhost:27017/rokka", {
 app.use(bodyParser())
 
 app.use("/", express.static("/public"));
+
+app.get("/",(req,res)=>{
+    res.sendFile(path.join(__dirname + "/public/index.html") )
+})
 
 app.get("/home", async (req, res) => {
 
